@@ -25,6 +25,7 @@
 		//admin receives list of all simulations
 		$this->set('menu', array(
 			'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
+			'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
 			'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index')
 		));
 		$this->set('submenu', array(
@@ -39,6 +40,7 @@
 		//Allowed if owner, admin, or enrolled student
 		$this->set('menu', array(
 			'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
+			'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
 			'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index')
 		));
 		$this->set('submenu', array(
@@ -50,6 +52,7 @@
 	public function admin_manage($id = null) {
 		$this->set('menu', array(
 			'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
+			'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
 			'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index')
 		));
 		$this->set('submenu', array(

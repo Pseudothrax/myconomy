@@ -1369,3 +1369,51 @@
 #3 /opt/lampp/htdocs/myconomy/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(SimulationsController), Object(CakeRequest), Object(CakeResponse))
 #4 /opt/lampp/htdocs/myconomy/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #5 {main}
+2012-12-04 23:23:40 Error: Fatal Error (1): Call to undefined method View::url() in [/opt/lampp/htdocs/myconomy/app/View/Elements/submenu.ctp, line 5]
+2012-12-04 23:23:40 Error: [FatalErrorException] Call to undefined method View::url()
+#0 /opt/lampp/htdocs/myconomy/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(1, 'Call to undefin...', '/opt/lampp/htdo...', 5)
+#1 [internal function]: ErrorHandler::handleError(1, 'Call to undefin...', '/opt/lampp/htdo...', 5, Array)
+#2 /opt/lampp/htdocs/myconomy/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 1, 'Call to undefin...', '/opt/lampp/htdo...', 5, Array)
+#3 /opt/lampp/htdocs/myconomy/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-12-04 23:24:41 Error: Fatal Error (4): syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in [/opt/lampp/htdocs/myconomy/app/View/Elements/submenu.ctp, line 8]
+2012-12-04 23:24:41 Error: [FatalErrorException] syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';'
+#0 /opt/lampp/htdocs/myconomy/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/opt/lampp/htdo...', 8)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/opt/lampp/htdo...', 8, Array)
+#2 /opt/lampp/htdocs/myconomy/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/opt/lampp/htdo...', 8, Array)
+#3 /opt/lampp/htdocs/myconomy/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-12-04 23:27:19 Error: Fatal Error (4): syntax error, unexpected 'else' (T_ELSE) in [/opt/lampp/htdocs/myconomy/app/View/Elements/submenu.ctp, line 9]
+2012-12-04 23:27:19 Error: [FatalErrorException] syntax error, unexpected 'else' (T_ELSE)
+#0 /opt/lampp/htdocs/myconomy/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/opt/lampp/htdo...', 9)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/opt/lampp/htdo...', 9, Array)
+#2 /opt/lampp/htdocs/myconomy/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/opt/lampp/htdo...', 9, Array)
+#3 /opt/lampp/htdocs/myconomy/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-12-04 23:27:31 Error: Fatal Error (4): syntax error, unexpected 'else' (T_ELSE) in [/opt/lampp/htdocs/myconomy/app/View/Elements/submenu.ctp, line 9]
+2012-12-04 23:27:31 Error: [FatalErrorException] syntax error, unexpected 'else' (T_ELSE)
+#0 /opt/lampp/htdocs/myconomy/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/opt/lampp/htdo...', 9)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/opt/lampp/htdo...', 9, Array)
+#2 /opt/lampp/htdocs/myconomy/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/opt/lampp/htdo...', 9, Array)
+#3 /opt/lampp/htdocs/myconomy/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-12-04 23:27:59 Error: Fatal Error (4): syntax error, unexpected ':' in [/opt/lampp/htdocs/myconomy/app/View/Elements/submenu.ctp, line 8]
+2012-12-04 23:27:59 Error: [FatalErrorException] syntax error, unexpected ':'
+#0 /opt/lampp/htdocs/myconomy/lib/Cake/Error/ErrorHandler.php(161): ErrorHandler::handleFatalError(4, 'syntax error, u...', '/opt/lampp/htdo...', 8)
+#1 [internal function]: ErrorHandler::handleError(4, 'syntax error, u...', '/opt/lampp/htdo...', 8, Array)
+#2 /opt/lampp/htdocs/myconomy/lib/Cake/Core/App.php(926): call_user_func('ErrorHandler::h...', 4, 'syntax error, u...', '/opt/lampp/htdo...', 8, Array)
+#3 /opt/lampp/htdocs/myconomy/lib/Cake/Core/App.php(899): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+2012-12-04 23:33:31 Error: [MissingActionException] Action Users::admin_view() could not be found.
+#0 /opt/lampp/htdocs/myconomy/lib/Cake/Controller/Scaffold.php(151): Scaffold->_scaffold(Object(CakeRequest))
+#1 /opt/lampp/htdocs/myconomy/lib/Cake/Controller/Controller.php(530): Scaffold->__construct(Object(UsersController), Object(CakeRequest))
+#2 /opt/lampp/htdocs/myconomy/lib/Cake/Controller/Controller.php(489): Controller->_getScaffold(Object(CakeRequest))
+#3 /opt/lampp/htdocs/myconomy/lib/Cake/Routing/Dispatcher.php(186): Controller->invokeAction(Object(CakeRequest))
+#4 /opt/lampp/htdocs/myconomy/lib/Cake/Routing/Dispatcher.php(161): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest), Object(CakeResponse))
+#5 /opt/lampp/htdocs/myconomy/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#6 {main}

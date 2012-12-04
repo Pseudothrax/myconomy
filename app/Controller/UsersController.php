@@ -32,6 +32,7 @@
 		$user = $this->Auth->user();
 		$this->set('menu', array(
 			'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
+			'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
 			'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index')
 		));
 	}
