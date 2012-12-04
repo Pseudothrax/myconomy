@@ -1,9 +1,8 @@
 <?php class Simulation extends AppModel {
-	public $name = 'Simulations';
 	public $validate = array();
     public $belongsTo = array(
         'Owner' => array(
-            'className'    => 'User',
+            'className'    => 'Users',
             'foreignKey'   => 'owner_id',
 			'conditions'   => array(
 				'OR' => array(

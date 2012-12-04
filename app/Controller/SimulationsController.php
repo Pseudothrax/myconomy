@@ -1,9 +1,8 @@
 <?php class SimulationsController extends AppController {
-	public $name = 'Simulations';
 	public $helpers = array('Time','Html', 'Form');
-	
 
 	public function admin_add() {
+		 $this->set('instructors',$this->Simulation->Owner->find('list',array('fields'=>array('id','username'),'conditions'=>array('type'=>'instructor'))));
 		 if ($this->request->is('post')) {	
 		    if ($this->Simulation->save($this->request->data)) {
 		        $this->Session->setFlash('Simulation Created.');
@@ -33,6 +32,29 @@
 		));
 		$this->recursion = 1;
 		$this->set('simulations', $this->Simulation->find('all'));
+
+	}
+
+	public function admin_view($id = null) {
+		//Allowed if owner, admin, or enrolled student
+		$this->set('menu', array(
+			'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
+			'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index')
+		));
+		$this->set('submenu', array(
+			'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'manage',$id)
+		));
+		$this->set('simulation', $this->Simulation->findById($id));
+	}
+
+	public function admin_manage($id = null) {
+		$this->set('menu', array(
+			'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
+			'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index')
+		));
+		$this->set('submenu', array(
+			'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'manage',$id)
+		));
 
 	}
 

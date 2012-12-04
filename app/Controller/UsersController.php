@@ -1,7 +1,6 @@
 <?php class UsersController extends AppController {
-	public $name = 'Users';
 	public $helpers = array('Html', 'Form');
-
+	public $scaffold;
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->autoRedirect = false;
@@ -35,10 +34,6 @@
 			'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
 			'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index')
 		));
-	}
-
-	public function admin_index() {
-
 	}
 
 	public function instructor_home() {

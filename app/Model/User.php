@@ -1,5 +1,7 @@
 <?php class User extends AppModel {
-	public $name = 'Users';
+	public $virtualFields = array(
+		'name' => "CONCAT(User.first_name,' ',User.last_name)"
+	);
 	public $hasMany = array(
         'Simulation' => array(
             'className'    => 'Simulation',
