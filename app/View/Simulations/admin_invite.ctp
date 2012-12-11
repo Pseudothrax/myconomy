@@ -1,5 +1,6 @@
-<!-- File: /app/View/Simulations/admin_users.ctp -->
+<!-- File: /app/View/Simulations/admin_invite.ctp -->
 
-<h3>Admin Simulation</h3>
-<h4>Invite a User</h4>
-<?php echo $this->element('subsubmenu'); ?>
+<?php echo $this->Form->create('RegistrationKey',array('type' => 'post')); ?>
+<?php echo $this->Form->input('email'); ?>
+<?php echo $this->Form->button('Invite', array('type'=>'submit')); ?>
+<?php echo $this->Form->end(); ?>

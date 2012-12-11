@@ -1,0 +1,1 @@
+<!-- File: /app/View/Simulations/admin_open_trades.ctp -->

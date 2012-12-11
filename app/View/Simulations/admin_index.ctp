@@ -1,7 +1,5 @@
 <!-- File: /app/View/Simulations/admin_index.ctp -->
 
-<h3>Admin Simulation List</h3>
-
 <table>
   <tr>
 	  <th>Simulation Name</th>

@@ -1,6 +1,6 @@
 <?php class UsersController extends AppController {
 	public $helpers = array('Time','Html', 'Form');
-	public $scaffold;
+
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->autoRedirect = false;
@@ -8,6 +8,7 @@
 	}
 
 	public function login() {
+        $this->set('title','Interactive Economics for the Classroom');
 		if ($this->request->is('post')) {
 		    if ($this->Auth->login()) {
 				$type = $this->Auth->User('type');
@@ -33,77 +34,57 @@
     }
 
 	public function admin_home() {
-		$user = $this->Auth->user();
-        $this->set('menu', array(
-            'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
-            'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
-            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
-            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index')
-        ));
+        $this->set('title', 'Home');
+        $this->set('menu', array('',$this->User->adminmenu()));
 	}
 
     public function admin_index() {
-        $this->set('menu', array(
-            'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
-            'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
-            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
-            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index')
-        ));
-        $this->set('submenu', array(
-            'Invite a New User' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'invite')
-        ));
+        $this->set('title', 'Users');
+        $this->set('menu', array('Users',$this->User->adminmenu()));
+        $this->set('submenu', array('',$this->User->adminsubmenu()));
         $this->recursion = 1;
         $this->set('users', $this->User->find('all'));
     }
 
-    public function admin_invite() {
-        $this->set('menu', array(
-            'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
-            'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
-            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
-            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index')
-        ));
-        $this->set('submenu', array(
-            'Invite' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'invite')
-        ));
-
+    public function admin_create() {
+        $this->set('title', 'Create New User');
+        $this->set('menu', array('Users',$this->User->adminmenu()));
+        $this->set('submenu', array('Create New User',$this->User->adminsubmenu()));
+        if ($this->request->is('post')) {
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash('User Created.');
+                $this->redirect(array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index'));
+            }
+        }
     }
 
     public function admin_view($id = null) {
-        $this->set('menu', array(
-            'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
-            'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
-            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
-            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index')
-        ));
-        $this->set('submenu', array(
-            'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'manage',$id)
-        ));
-        $this->set('user', $this->User->findById($id));
+        $this->recursion = 2;
+        $user = $this->User->findById($id);
+        $this->set('title', 'User '.$user['User']['first_name'].' '.$user['User']['last_name']);
+        $this->set('menu', array('Users',$this->User->adminmenu()));
+        $this->set('submenu', array('',$this->User->adminsubmenu()));
+        $this->set('subsubmenu',array('List',$this->User->adminsubsubmenu($id,$user['User']['type'])));
+        $this->set('user', $user);
+    }
+
+    public function admin_accounts($id = null) {
+        $user = $this->User->findById($id);
+        $this->set('title', 'User '.$user['User']['first_name'].' '.$user['User']['last_name']);
+        $this->set('subtitle', 'Accounts');
+        $this->set('menu', array('Users',$this->User->adminmenu()));
+        $this->set('submenu', array('',$this->User->adminsubmenu()));
+        $this->set('subsubmenu',array('Accounts',$this->User->adminsubsubmenu($id,$user['User']['type'])));
+        $this->set('user', $user);
     }
 
     public function admin_manage($id = null) {
-        $this->set('menu', array(
-            'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
-            'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
-            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
-            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index')
-        ));
-        $this->set('submenu', array(
-            'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'manage',$id)
-        ));
-    }
-
-    public function admin_edit($id = null) {
-        $this->set('menu', array(
-            'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
-            'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
-            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
-            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index')
-        ));
-        $this->set('submenu', array(
-            'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'manage',$id)
-        ));
+        $user = $this->User->findById($id);
+        $this->set('title', 'User '.$user['User']['first_name'].' '.$user['User']['last_name']);
+        $this->set('subtitle', 'Manage');
+        $this->set('menu', array('Users',$this->User->adminmenu()));
+        $this->set('submenu', array('',$this->User->adminsubmenu()));
+        $this->set('subsubmenu',array('Manage',$this->User->adminsubsubmenu($id,$user['User']['type'])));
     }
 
 	public function instructor_home() {

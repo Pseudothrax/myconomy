@@ -1,4 +1,6 @@
 <!-- File: /app/View/Simulations/admin_properties.ctp -->
 
-<h3>Admin Simulation</h3>
-<h4>Simulation Properties</h4>
+<br />
+<pre>
+    <?php print_r($simulation['Properties']); ?>
+</pre>

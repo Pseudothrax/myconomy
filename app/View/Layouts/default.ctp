@@ -16,7 +16,7 @@
 
     <div id="header">
         <div id="logo">
-            <h1><a href="index.html">MyConomy</a></h1>
+            <h1><a href="index.html">MyConomy //</a></h1>
         </div>
         <div id="menu">
             <?php echo $this->element('menu'); ?>
@@ -24,10 +24,24 @@
         <div id="submenu">
             <?php echo $this->element('submenu'); ?>
         </div>
+        <div id="title">
+            <?php echo $title ?>
+        </div>
+        <div id="subsubmenu">
+            <?php echo $this->element('subsubmenu'); ?>
+        </div>
     </div>
     <div id="main">
         <div id="page-wrapper">
             <div id="page">
+                <?php if(isset($subtitle)): ?>
+                <div id="subtitle">
+                    <?php echo $subtitle ?>
+                </div>
+                <?php endif; ?>
+                <div id="actions">
+                    <?php echo $this->element('actions'); ?>
+                </div>
                 <?php echo $this->fetch('content'); ?>
             </div>
         </div>

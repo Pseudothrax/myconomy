@@ -1,7 +1,5 @@
 <!-- File: /app/View/Simulations/admin_index.ctp -->
 
-<h3>Admin Users</h3>
-
 <table>
 <tr>
     <th>User Name</th>

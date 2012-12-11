@@ -57,11 +57,48 @@ CREATE TABLE `properties` (
     `modified` 		DATETIME 		DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS `registerKeys`;
-CREATE TABLE `registerKeys` (
+DROP TABLE IF EXISTS `sessions`;
+CREATE TABLE `sessions` (
 	`id` 			INT UNSIGNED 	AUTO_INCREMENT PRIMARY KEY,
-	`type`			VARCHAR(25)		NOT NULL,
-	`key`           VARCHAR(60)     NOT NULL,
+    `start`         DATETIME        NOT NULL,
+    `end`           DATETIME        NOT NULL,
+    `created` 		DATETIME 		DEFAULT NULL,
+    `modified` 		DATETIME 		DEFAULT NULL
+
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `trades`;
+CREATE TABLE `trades` (
+	`id` 			INT UNSIGNED 	AUTO_INCREMENT PRIMARY KEY,
+	`simulation_id`  INT UNSIGNED    NOT NULL,
+	`property_id`     INT UNSIGNED    NOT NULL,
+    `from_id`        INT UNSIGNED    NOT NULL,
+    `to_id`          INT UNSIGNED    NOT NULL,
+    `amount`        DOUBLE          NOT NULL,
+    `created` 		DATETIME 		DEFAULT NULL,
+    `modified` 		DATETIME 		DEFAULT NULL
+
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `offers`;
+CREATE TABLE `offers` (
+	`id` 			INT UNSIGNED 	AUTO_INCREMENT PRIMARY KEY,
+	`simulation_id`  INT UNSIGNED    NOT NULL,
+    `property_id`     INT UNSIGNED    NOT NULL,
+    `owner_id`       INT UNSIGNED    NOT NULL,
+    `maker_id`       INT UNSIGNED    NOT NULL,
+    `amount`        DOUBLE          NOT NULL,
+    `status`        VARCHAR(25)     NOT NULL,
+    `created` 		DATETIME 		DEFAULT NULL,
+    `modified` 		DATETIME 		DEFAULT NULL
+
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `activities`;
+CREATE TABLE `activities` (
+	`id` 			INT UNSIGNED 	AUTO_INCREMENT PRIMARY KEY,
+	`description`   VARCHAR(100)    NOT NULL,
+	`type`          VARCHAR(25)     NOT NULL,
     `created` 		DATETIME 		DEFAULT NULL,
     `modified` 		DATETIME 		DEFAULT NULL
 

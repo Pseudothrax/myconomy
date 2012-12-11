@@ -3,11 +3,11 @@
 		'name' => "CONCAT(User.first_name,' ',User.last_name)"
 	);
 	public $hasMany = array(
-        'Simulation' => array(
+        'Simulations' => array(
             'className'    => 'Simulation',
             'foreignKey'   => 'owner_id'
         ),
-		'Account' => array(
+		'Accounts' => array(
 			'className'    => 'Account',
 			'foreignKey'   => 'user_id'
 		)
@@ -44,5 +44,34 @@
 		return true;
 	}
 
+    public function adminmenu() {
+        return array(
+            'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
+            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
+            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index'),
+            'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout')
+        );
+    }
+
+    public function adminsubmenu() {
+        return array(
+            'Create New User' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'create')
+        );
+    }
+
+    public function adminsubsubmenu($id, $type) {
+        if($type === 'instructor') return array(
+            'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'manage',$id),
+            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'simulations',$id),
+            'Students' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'simulations',$id)
+        );
+        if($type === 'student') return array(
+            'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'manage',$id),
+            'Accounts' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'accounts',$id)
+        );
+        if($type === 'admin') return array(
+            'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'manage',$id)
+        );
+    }
 
 } ?>
