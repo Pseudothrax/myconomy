@@ -1,8 +1,6 @@
 <!-- File: /app/View/Simulations/admin_index.ctp -->
 
-<?php echo $this->element('menu'); ?>
-<h3>Admin Simulation List</h3> 
-<?php echo $this->element('submenu'); ?>
+<h3>Admin Simulation List</h3>
 
 <table>
   <tr>

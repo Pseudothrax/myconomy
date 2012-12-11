@@ -4,7 +4,7 @@
 <ul>
 <?php foreach($menu as $item => $url): ?>
   <?php if($this->Html->url($url) === $this->here): ?>
-  <li><?php echo $item; ?></li>
+  <li><?php echo $this->Html->link($item,$url,array('class'=>'current_page_item')); ?></li>
   <?php else: ?>
   <li><?php echo $this->Html->link($item,$url); ?></li>
   <?php endif; ?>

@@ -21,6 +21,9 @@
         <div id="menu">
             <?php echo $this->element('menu'); ?>
         </div>
+        <div id="submenu">
+            <?php echo $this->element('submenu'); ?>
+        </div>
     </div>
     <div id="main">
         <div id="page-wrapper">
@@ -39,7 +42,6 @@
         </div>
         <?php endif; ?>
     </div>
-
 
 </div>
 <?php //echo $this->element('sql_dump'); ?>

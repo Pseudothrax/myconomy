@@ -1,7 +1,6 @@
 <!-- File: /app/View/Simulations/admin_index.ctp -->
 
 <h3>Admin Users</h3>
-<?php echo $this->element('submenu'); ?>
 
 <table>
 <tr>
