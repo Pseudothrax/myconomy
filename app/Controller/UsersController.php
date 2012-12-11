@@ -29,10 +29,6 @@
 		$this->redirect($this->Auth->logout());
 	}
 
-    public function register($code = 0) {
-
-    }
-
 	public function admin_home() {
         $this->set('title', 'Home');
         $this->set('menu', array('',$this->User->adminmenu()));
@@ -78,6 +74,16 @@
         $this->set('user', $user);
     }
 
+    public function admin_simulations($id = null) {
+        $user = $this->User->findById($id);
+        $this->set('title', 'User '.$user['User']['first_name'].' '.$user['User']['last_name']);
+        $this->set('subtitle', 'Simulations');
+        $this->set('menu', array('Users',$this->User->adminmenu()));
+        $this->set('submenu', array('',$this->User->adminsubmenu()));
+        $this->set('subsubmenu',array('Simulations',$this->User->adminsubsubmenu($id,$user['User']['type'])));
+        $this->set('user', $user);
+    }
+
     public function admin_manage($id = null) {
         $user = $this->User->findById($id);
         $this->set('title', 'User '.$user['User']['first_name'].' '.$user['User']['last_name']);
@@ -86,19 +92,5 @@
         $this->set('submenu', array('',$this->User->adminsubmenu()));
         $this->set('subsubmenu',array('Manage',$this->User->adminsubsubmenu($id,$user['User']['type'])));
     }
-
-	public function instructor_home() {
-		$user = $this->Auth->user();
-		$this->set('menu', array(
-			'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout')
-		));
-	}
-
-	public function home() {
-		$user = $this->Auth->user();
-		$this->set('menu', array(
-			'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout')
-		));
-	}
 
 } ?>

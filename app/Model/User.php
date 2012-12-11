@@ -62,8 +62,7 @@
     public function adminsubsubmenu($id, $type) {
         if($type === 'instructor') return array(
             'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'manage',$id),
-            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'simulations',$id),
-            'Students' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'simulations',$id)
+            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'simulations',$id)
         );
         if($type === 'student') return array(
             'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'manage',$id),
