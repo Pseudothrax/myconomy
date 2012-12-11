@@ -57,3 +57,12 @@ CREATE TABLE `properties` (
     `modified` 		DATETIME 		DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+DROP TABLE IF EXISTS `registerKeys`;
+CREATE TABLE `registerKeys` (
+	`id` 			INT UNSIGNED 	AUTO_INCREMENT PRIMARY KEY,
+	`type`			VARCHAR(25)		NOT NULL,
+	`key`           VARCHAR(60)     NOT NULL,
+    `created` 		DATETIME 		DEFAULT NULL,
+    `modified` 		DATETIME 		DEFAULT NULL
+
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

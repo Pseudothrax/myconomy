@@ -1,7 +1,7 @@
-<!-- File: /app/View/Simulations/admin_view.ctp -->
+<!-- File: /app/View/Simulations/admin_users.ctp -->
 
 <?php echo $this->element('menu'); ?>
 <h3>Admin Simulation</h3>
 <?php echo $this->element('submenu'); ?>
-<h4>Manage Simulation</h4>
+<h4>Invite a User</h4>
 <?php echo $this->element('subsubmenu'); ?>

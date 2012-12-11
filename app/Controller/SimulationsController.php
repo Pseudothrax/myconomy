@@ -22,44 +22,116 @@
 	}
 
 	public function admin_index() {
-		//admin receives list of all simulations
 		$this->set('menu', array(
 			'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
 			'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
-			'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index')
+			'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
+            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index')
 		));
 		$this->set('submenu', array(
 			'Create New Simulation' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'add')
 		));
 		$this->recursion = 1;
 		$this->set('simulations', $this->Simulation->find('all'));
-
 	}
 
 	public function admin_view($id = null) {
-		//Allowed if owner, admin, or enrolled student
-		$this->set('menu', array(
-			'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
-			'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
-			'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index')
-		));
+        $this->set('menu', array(
+            'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
+            'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
+            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
+            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index')
+        ));
 		$this->set('submenu', array(
-			'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'manage',$id)
+			'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'manage',$id),
+            'Properties' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'properties',$id),
+            'Accounts' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'accounts',$id)
 		));
 		$this->set('simulation', $this->Simulation->findById($id));
 	}
 
 	public function admin_manage($id = null) {
-		$this->set('menu', array(
-			'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
-			'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
-			'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index')
-		));
+        $this->set('menu', array(
+            'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
+            'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
+            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
+            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index')
+        ));
 		$this->set('submenu', array(
-			'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'manage',$id)
+			'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'manage',$id),
+            'Properties' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'properties',$id),
+            'Accounts' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'accounts',$id)
 		));
+        $this->set('subsubmenu', array(
+            'Edit' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'edit',$id)
+        ));
 
 	}
+
+    public function admin_properties($id = null) {
+        $this->set('menu', array(
+            'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
+            'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
+            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
+            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index')
+        ));
+        $this->set('submenu', array(
+            'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'manage',$id),
+            'Properties' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'properties',$id),
+            'Accounts' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'accounts',$id)
+        ));
+    }
+
+    public function admin_accounts($id = null) {
+        $this->set('menu', array(
+            'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
+            'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
+            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
+            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index')
+        ));
+        $this->set('submenu', array(
+            'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'manage',$id),
+            'Properties' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'properties',$id),
+            'Accounts' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'accounts',$id)
+        ));
+        $this->set('subsubmenu', array(
+            'Invite' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'invite',$id)
+        ));
+    }
+
+    public function admin_invite($id = null) {
+        $this->set('menu', array(
+            'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
+            'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
+            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
+            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index')
+        ));
+        $this->set('submenu', array(
+            'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'manage',$id),
+            'Properties' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'properties',$id),
+            'Accounts' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'accounts',$id)
+        ));
+        $this->set('subsubmenu', array(
+            'Invite' => array('admin'=>true,'instructor'=>false,'controller'=>'controller','action'=>'invite',$id)
+        ));
+    }
+
+    public function admin_edit($id = null) {
+        $this->set('menu', array(
+            'Logout' => array('admin'=>false,'instructor'=>false,'controller'=>'users','action'=>'logout'),
+            'Home' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'home'),
+            'Simulations' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'index'),
+            'Users' => array('admin'=>true,'instructor'=>false,'controller'=>'users','action'=>'index')
+        ));
+        $this->set('submenu', array(
+            'Manage' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'manage',$id),
+            'Properties' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'properties',$id),
+            'Accounts' => array('admin'=>true,'instructor'=>false,'controller'=>'simulations','action'=>'accounts',$id)
+        ));
+        $this->set('subsubmenu', array(
+            'Edit' => array('admin'=>true,'instructor'=>false,'controller'=>'controller','action'=>'invite',$id)
+        ));
+    }
 
 	public function instructor_index() {
 		//instructor receives list of their simulations
